@@ -130,17 +130,17 @@ Escriba su análisis y la solución aplicada en el archivo ANALISIS_CONCURRENCIA
 ![](img/solve/Punto1-2.png)
 
 ### Punto 4
-![](img/solve/Punto1-4.png)
+![](img/solve/Punto1-4.PNG)
 
 ### Punto 5
-![](img/solve/Punto1-5.png)
+![](img/solve/Punto1-5.PNG)
 ### Punto 6
-![](img/solve/Punto1-6.png)
+![](img/solve/Punto1-6.PNG)
 
 ## Parte 2
-![](img/solve/Punto2-2.png)
+![](img/solve/Punto2-2.PNG)
 ### Punto 3
-![](img/solve/Punto2-3.png)
+![](img/solve/Punto2-3.PNG)
 ### Punto 4
-![](img/solve/Punto2-4.1.png)
-![](img/solve/Punto2-4.2.png)
+![](img/solve/Punto2-4.1.PNG)
+![](img/solve/Punto2-4.2.PNG)
