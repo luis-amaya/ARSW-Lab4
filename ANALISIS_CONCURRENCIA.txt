@@ -1,3 +1,8 @@
-curl -i -X POST -HContent-Type:application/json -HAccept:application/json http://localhost:8080/blueprints -d '{"author":"Mina","name":"Jayco3","points":[{"x":140,"y":140},{"x":115,"y":115}]}'
+1.
+    *   Una de las condiciones que se pueden dar cuando utiliza un POST y al tiempo se realiza un GET, puede 
+        ocurrir que no se muestre la información actualizada. 
+    *   Al realizar un PUT y un GET al tiempo, no mostrar la información actualizada
 
-curl -i -X PUT -HContent-type:application/json -HAccept:appicltion/json http://localhost:8080/blueprints/Mina/Jayco1 -d '{"points":[{"x":0,"y":0},{"x":0,"y":0)}]}'
+2.
+    *   Los métodos que utilizan POST, PUT y GET. Ya que estos acceden al mismo tiempo a blueprintServices dado que 
+        esta clase maneja las solicitudes que se realizan

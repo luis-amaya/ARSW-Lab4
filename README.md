@@ -122,4 +122,25 @@ Ajuste el código para suprimir las condiciones de carrera. Tengan en cuenta que
 
 Escriba su análisis y la solución aplicada en el archivo ANALISIS_CONCURRENCIA.txt
 
+# Desarrollo
 
+## Parte 1
+
+### Punto 2
+![](img/solve/Punto1-2.png)
+
+### Punto 4
+![](img/solve/Punto1-4.png)
+
+### Punto 5
+![](img/solve/Punto1-5.png)
+### Punto 6
+![](img/solve/Punto1-6.png)
+
+## Parte 2
+![](img/solve/Punto2-2.png)
+### Punto 3
+![](img/solve/Punto2-3.png)
+### Punto 4
+![](img/solve/Punto2-4.1.png)
+![](img/solve/Punto2-4.2.png)

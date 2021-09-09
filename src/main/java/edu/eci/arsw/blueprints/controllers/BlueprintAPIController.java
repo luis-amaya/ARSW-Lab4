@@ -84,13 +84,10 @@ public class BlueprintAPIController {
     public ResponseEntity<?> manejadorPostRecursoPlanoAutor(@PathVariable String author, @PathVariable String bpname,
             @RequestBody Blueprint data) {
         Blueprint blueprint;
-        System.out.println("Before");
         System.out.println(data);
         try {
-            System.out.println("Inside");
             blueprint = blueprintsServices.getBlueprint(author, bpname);
             blueprint.setPoints(data.getPoints());
-            System.out.println("Done");
             return new ResponseEntity<>(HttpStatus.CREATED.getReasonPhrase(), HttpStatus.CREATED);
         } catch (BlueprintNotFoundException e) {
             e.printStackTrace();
