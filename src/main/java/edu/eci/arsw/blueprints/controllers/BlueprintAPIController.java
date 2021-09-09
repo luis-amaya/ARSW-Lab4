@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.eci.arsw.blueprints.model.Blueprint;
 import edu.eci.arsw.blueprints.model.Point;
+import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
 import edu.eci.arsw.blueprints.services.BlueprintsServices;
 
@@ -41,7 +44,7 @@ public class BlueprintAPIController {
         return new ResponseEntity<>(blueprintSet, HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/authors/{author}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{author}")
     public ResponseEntity<?> getBluePrintsByAuthor(@PathVariable String author) {
         Set<Blueprint> blueprintSet;
         try {
@@ -52,7 +55,7 @@ public class BlueprintAPIController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/authors/{author}/blueprints/{bpname}")
+    @RequestMapping(method = RequestMethod.GET, value = "/{author}/{bpname}")
     public ResponseEntity<?> getBlueprintsByAuthor(@PathVariable String author, @PathVariable String bpname) {
         Blueprint blueprint;
         try {
@@ -66,15 +69,28 @@ public class BlueprintAPIController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> manejadorPostRecursoPlanos(@RequestBody JSONObject blueprint) {
+    public ResponseEntity<?> manejadorPostRecursoPlanos(@RequestBody Blueprint blueprint) {
         try {
-            // blueprintsServices.addNewBlueprint(blueprint);
-            System.out.println(blueprint.get("author") + " " + blueprint);
+            blueprintsServices.addNewBlueprint(blueprint);
             return new ResponseEntity<>(HttpStatus.CREATED.getReasonPhrase(), HttpStatus.CREATED);
         } catch (Exception ex) {
             ex.printStackTrace();
             return new ResponseEntity<>(HttpStatus.FORBIDDEN.getReasonPhrase(), HttpStatus.FORBIDDEN);
         }
 
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/blueprints/{author}/{bpname}")
+    public ResponseEntity<?> manejadorPostRecursoPlanoAutor(@PathVariable String author, @PathVariable String name,
+            @RequestBody List<Point> data) {
+        Blueprint blueprint;
+        try {
+            blueprint = blueprintsServices.getBlueprint(author, name);
+            blueprint.setPoints(data);
+            return new ResponseEntity<>(HttpStatus.CREATED.getReasonPhrase(), HttpStatus.CREATED);
+        } catch (BlueprintNotFoundException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN.getReasonPhrase(), HttpStatus.FORBIDDEN);
+        }
     }
 }
